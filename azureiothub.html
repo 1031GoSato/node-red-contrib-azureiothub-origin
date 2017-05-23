@@ -4,7 +4,7 @@
         color: '#00abec',
         defaults: {
             name: {value:"Azure IoT Hub"},
-            protocol: {value:"amqp"}
+            protocol: {value:"MQTT"}
         },
         inputs:1,
         outputs:1,
@@ -14,9 +14,10 @@
         },
         credentials: {
             hostname: {type:"text"}
+            deviceId: {type:"text"}
+            sharedaccesskey: {type:"text"}
         }
     });
-
     RED.nodes.registerType('azureiothubregistry',{
         category: 'cloud',
         color: '#00abec',
@@ -43,15 +44,23 @@
     <div class="form-row">
         <label for="node-input-protocol"><i class="icon-tag"></i> Protocol</label>
         <select id="node-input-protocol">
-            <option>http</option>
-            <option>amqp</option>
-            <option>mqtt</option>
-            <option>amqpWs</option>
+            <option>HTTP</option>
+            <option>AMQP</option>
+            <option>MQTT</option>
+            <option>AMQPWS</option>
         </select>
     </div>
     <div class="form-row">
         <label for="node-input-hostname"><i class="fa fa-bookmark"></i> Hostname</label>
         <input type="text" id="node-input-hostname">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceid"><i class="fa fa-bookmark"></i> DeviceId</label>
+        <input type="text" id="node-input-deviceid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sharedaccesskey"><i class="fa fa-bookmark"></i> SharedAccessKey</label>
+        <input type="text" id="node-input-sharedaccesskey">
     </div>
 </script>
 
@@ -73,4 +82,3 @@
 <script type="text/x-red" data-help-name="azureiothubregistry">
     <p>A simple node that registers devices with Azure IoT Hub</p>
 </script>
-
