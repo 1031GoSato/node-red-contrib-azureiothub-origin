@@ -1,7 +1,7 @@
 {
-  "name": "node-red-contrib-azure-iot-hub",
-  "description": "Connector to azure on Node-Red",
-  "version": "0.3.0",
+  "name": "node-red-contrib-azure-iot-hub-origin",
+  "description": "Original Connector to azure on Node-Red",
+  "version": "0.1.0",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -24,8 +24,8 @@
     "url": "https://github.com/lcarli/NodeRedIoTHub"
   },
   "author": {
-    "name": "Lucas Humenhuk",
-    "email": "luhumenh@microsoft.com",
+    "name": "Go Sato",
+    "email": "g-sato@nekonet.co.jp",
     "url": "http://nodered.org"
   }
 }
