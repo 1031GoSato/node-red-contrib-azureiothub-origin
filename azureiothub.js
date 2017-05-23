@@ -140,12 +140,11 @@ module.exports = function (RED) {
                 //Sample string: {"deviceId": "name", "key": "jsadhjahdue7230-=13", "protocol": "amqp", "data": "25"}
                 messageJSON = JSON.parse(msg.payload);
             }
-
             //Creating connectionString
             //Sample
             //HostName=sample.azure-devices.net;DeviceId=sampleDevice;SharedAccessKey=wddU//P8fdfbSBDbIdghZAoSSS5gPhIZREhy3Zcv0JU=
-            newConnectionString = "HostName=" + node.credentials.hostname + ";DeviceId=" + messageJSON.deviceId + ";SharedAccessKey=" + messageJSON.key
-            newProtocol = messageJSON.protocol;
+            newConnectionString = "HostName=" + node.credentials.hostname + ";DeviceId=" + node.credentials.deviceId + ";SharedAccessKey=" + node.credentials.sharedaccesskey
+            newProtocol = node.credentials.protocol;
 
             // Sending data to Azure IoT Hub Hub using specific connectionString
             sendMessageToIoTHub(node, messageJSON.data, nodeConfigUpdated(newConnectionString, newProtocol));
@@ -191,10 +190,12 @@ module.exports = function (RED) {
     RED.nodes.registerType("azureiothub", AzureIoTHubNode, {
         credentials: {
             hostname: { type: "text" }
+            deviceId: { type: "text" }
+            sharedaccesskey: { type: "text" }
         },
         defaults: {
             name: { value: "Azure IoT Hub" },
-            protocol: { value: "amqp" }
+            protocol: { value: "AMQP" }
         }
     });
 
